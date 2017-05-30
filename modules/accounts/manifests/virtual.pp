@@ -1,6 +1,6 @@
 define accounts::virtual ($uid, $realname, $pass) {
 
-	package { 'vim':  ensure => 'installed' }
+	package { 'vim-minimal':  ensure => 'installed' }
 	package { 'curl': ensure => 'installed' }
 	package { 'git':  ensure => 'installed' }
 
