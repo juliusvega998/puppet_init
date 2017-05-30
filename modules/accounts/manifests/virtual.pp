@@ -1,4 +1,8 @@
-define accounts::virtual ($name, $realname, $pass) {
+define accounts::virtual ($uid, $realname, $pass) {
+
+	package { 'vim':  ensure => 'installed' }
+	package { 'curl': ensure => 'installed' }
+	package { 'git':  ensure => 'installed' }
 
 	user { $title:
 		ensure		=> 'present',
@@ -22,6 +26,14 @@ define accounts::virtual ($name, $realname, $pass) {
 		group		=> $title,
 		mode		=> 0750,
 		require		=> [ User[$title], Group[$title] ],
+	}
+
+	file { "/home/${title}/scripts":
+		ensure		=> directory,
+	}
+
+	file { "/home/${title}/src/":
+		ensure		=> directory,
 	}
 }
 
