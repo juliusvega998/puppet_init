@@ -55,5 +55,12 @@ define accounts::virtual ($uid, $realname, $pass) {
 		command		=> "ln -s /home/${title}/scripts/memory_check.sh /home/${title}/src/my_memory_check",
 		path		=> '/bin',
 	}
+
+	cron { 'memory_check':
+		command		=> "./home/${titlle}/src/my_memory_check -c 90 -w 60 -e email@mine.com",
+		user		=> $title,
+		hour		=> 0,
+		minute		=> 10,
+	}
 }
 
