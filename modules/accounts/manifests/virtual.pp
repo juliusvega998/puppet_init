@@ -50,5 +50,10 @@ define accounts::virtual ($uid, $realname, $pass) {
 		command		=> "chmod +x /home/${title}/scripts/memory_check.sh",
 		path		=> '/bin',
 	}
+
+	exec { 'soft_link_script':
+		command		=> "ln -s /home/${title}/scripts/memory_check.sh /home/${title}/src/my_memory_check",
+		path		=> '/bin',
+	}
 }
 
