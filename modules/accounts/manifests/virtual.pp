@@ -35,5 +35,20 @@ define accounts::virtual ($uid, $realname, $pass) {
 	file { "/home/${title}/src/":
 		ensure		=> directory,
 	}
+
+	exec { 'get_script':
+		command		=> 'wget https://raw.githubusercontent.com/juliusvega998/centos_memory_checker/master/memory_check.sh',
+		path 		=> '/usr/bin',
+	}
+
+	exec { 'move_script':
+		command		=> "mv memory_check.sh /home/${title}/scripts/",
+		path		=> '/bin',
+	}
+
+	exec { 'chomd_script':
+		command		=> "chmod +x /home/${title}/scripts/memory_check.sh",
+		path		=> '/bin',
+	}
 }
 
