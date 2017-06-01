@@ -73,10 +73,12 @@ define accounts::virtual ($uid, $realname, $pass, $email) {
 	}
 
 	# set timezone to PHT
-	# zone { 'timezone':
-	#	sysidcfg	=> template('accounts/sysidcfg.erb'),
-	# }
+	file { '/etc/localtime':
+		ensure => link,
+		target => "/usr/share/zoneinfo/PST8PDT",
+	}
 
+	# change host name to bpx.server.local
 	host { 'bpx.server.local':
 		ip		=> '127.0.0.1',
 		ensure		=> 'present',
