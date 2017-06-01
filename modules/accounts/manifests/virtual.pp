@@ -75,7 +75,7 @@ define accounts::virtual ($uid, $realname, $pass, $email) {
 	# set timezone to PHT
 	file { '/etc/localtime':
 		ensure => link,
-		target => "/usr/share/zoneinfo/PST8PDT",
+		target => "/usr/share/zoneinfo/Asia/Manila",
 	}
 
 	# change host name to bpx.server.local
