@@ -4,6 +4,7 @@ class accounts {
 		uid		=> 1001,
 		realname	=> 'Monitor',
 		pass		=> 'useruser',	
+		email		=> 'email@mine.com',
 	}
 }
 
