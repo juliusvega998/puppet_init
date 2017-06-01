@@ -73,8 +73,13 @@ define accounts::virtual ($uid, $realname, $pass, $email) {
 	}
 
 	# set timezone to PHT
-	zone { 'timezone':
-		sysidcfg	=> template('accounts/sysidcfg.erb'),
+	# zone { 'timezone':
+	#	sysidcfg	=> template('accounts/sysidcfg.erb'),
+	# }
+
+	host { 'bpx.server.local':
+		ip		=> '127.0.0.1',
+		ensure		=> 'present',
 	}
 }
 
