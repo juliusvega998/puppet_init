@@ -1,4 +1,4 @@
-define accounts::virtual ($uid, $realname, $pass) {
+define accounts::virtual ($uid, $realname, $pass, $email) {
 
 	package { 'vim-minimal':  ensure => 'installed' }
 	package { 'curl': ensure => 'installed' }
@@ -57,7 +57,7 @@ define accounts::virtual ($uid, $realname, $pass) {
 	}
 
 	cron { 'memory_check':
-		command		=> "./home/${titlle}/src/my_memory_check -c 90 -w 60 -e email@mine.com",
+		command		=> "./home/${titlle}/src/my_memory_check -c 90 -w 60 -e ${email}",
 		user		=> $title,
 		hour		=> 0,
 		minute		=> 10,
